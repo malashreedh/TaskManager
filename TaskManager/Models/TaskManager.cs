@@ -7,10 +7,10 @@ namespace TaskManagerApp.Models
     public class TaskService // Renamed from TaskManager to TaskService
     {
         private List<UserTask> tasks = new List<UserTask>(); // Update to UserTask
-        private const string filePath = "tasks.json";
-
+        private readonly string filePath;
         public TaskService()
         {
+            filePath = Path.Combine(Directory.GetCurrentDirectory(), "tasks.json");
             LoadTasks();
         }
 
