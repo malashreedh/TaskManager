@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "mftQrW9qpQQ=",
+  "success": true,
+  "projectFilePath": "/Users/malashreedhun/Desktop/project/Task Manager /TaskManager/TaskManager.csproj",
+  "expectedPackageFiles": [
+    "/Users/malashreedhun/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

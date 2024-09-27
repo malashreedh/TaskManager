@@ -1,0 +1,29 @@
+﻿@page
+@model TaskManagerApp.Pages.IndexModel
+
+<h2>Task Manager</h2>
+
+<form method="post" asp-page-handler="AddTask">
+    <input type="text" asp-for="NewTask.Title" placeholder="Task Title" required />
+    <input type="text" asp-for="NewTask.Description" placeholder="Task Description" />
+    <input type="datetime-local" asp-for="NewTask.Deadline" required />
+    <button type="submit">Add Task</button>
+</form>
+
+<h3>Tasks</h3>
+<ul>
+    @foreach (var task in Model.Tasks)
+    {
+        <li>
+            @task.Title - @task.Description - Due: @task.Deadline.ToString("g")
+            <form method="post" asp-page-handler="CompleteTask">
+                <input type="hidden" name="title" value="@task.Title" />
+                <button type="submit" @(task.IsComplete ? "disabled" : "")>Complete</button>
+            </form>
+            <form method="post" asp-page-handler="RemoveTask">
+                <input type="hidden" name="title" value="@task.Title" />
+                <button type="submit">Remove</button>
+            </form>
+        </li>
+    }
+</ul>
