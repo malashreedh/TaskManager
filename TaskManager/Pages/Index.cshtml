@@ -6,40 +6,58 @@
 
 <section class="main-container">
     <div class="to-dos">
-            <ul class="task-list-box">
-                <div class="h3-container"> <h3>To Dos</h3> </div>
-                <div class="task-box">
-                    @foreach (var task in Model.Tasks)
-                    {
-                        <li>
-                            <div class= "tasks">
-                                <section class="description">
-                                    <div >
-                                        <div>@task.Title </div>  
-                                        <p>- @task.Description</p>
-                                    </div>
-                                </section>
+        <ul class="task-list-box">
+            <div class="h3-container">
+                <h3>To Dos</h3>
+            </div>
+            <div class="task-box">
+                <div class="sort-buttons">
+                    <form method="get">
+                        <select name="sort" onchange="this.form.submit()">
+                            <option value="">Sort by...</option>
+                            <option value="importance">Priority</option>
+                            <option value="due">Due Date</option>
+                            <option value="added">Added Date</option>
+                        </select>
+                    </form>
+                </div>
 
-                                <section>
-                                    <div class= "task-due">
-                                        - Due: @task.Deadline.ToString("g")
+                @foreach (var task in Model.Tasks)
+                {
+                    // Code inside the foreach loop
+                    var isOverdue = task.Deadline < DateTime.Now && !task.IsComplete;
+                    <li class="@(isOverdue ? "task-overdue" : "")">
+                        <div class="tasks">
+                            <section class="description">
+                                <div>
+                                    <div>@task.Title </div>  
+                                    <p>- @task.Description</p>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="task-due">
+                                    - Due: @task.Deadline.ToString("g")
                                     <div>
-                                        <form class= "task-form" method="post" asp-page-handler="CompleteTask">
+                                        <form class="task-form" method="post" asp-page-handler="CompleteTask">
                                             <input type="hidden" name="title" value="@task.Title" />
                                             <button type="submit" @(task.IsComplete ? "disabled" : "")>Complete</button>
                                         </form>
-                                        <form class= "task-form" method="post" asp-page-handler="RemoveTask">
+                                        <form class="task-form" method="post" asp-page-handler="RemoveTask">
                                             <input type="hidden" name="title" value="@task.Title" />
                                             <button type="submit">Remove</button>
                                         </form>
                                     </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </li>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
                 }
-            </ul>
+
+            </div>
+        </ul>
     </div>
+
     
     <div class="secondary-container">
         
@@ -52,9 +70,10 @@
                     <input type="datetime-local" asp-for="NewTask.Deadline" />
 
                     <select asp-for="NewTask.Priority">
-                            <option value="High">High</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Low">Low</option>
+                            <option value="None" selected>Priority: None</option>
+                            <option value="High">Priority: High</option>
+                            <option value="Medium">Priority: Medium</option>
+                            <option value="Low">Priority: Low</option>
                     </select>
                     
                     <button type="submit">Add Task</button>
@@ -65,9 +84,9 @@
 
         <div class="others">
             <ul>
-                <li> Important Tasks </li>
                 <li> Completed Tasks </li>
                 <li> Overdue Tasks </li>
+                <li> Removed Tasks </li>
                 <li> All Tasks </li>
             </ul>
         </div>
@@ -75,4 +94,70 @@
     </div>
 </section>
 
+<script>
+    const tasks = @Html.Raw(Json.Serialize(Model.Tasks));
+    checkTaskDueSoon(tasks);
+</script>
 
+@* ASK USER FOR PERMISSION TO NOTIFY THROUGH WEB BROWSER *@
+
+<script>
+    function askNotificationPermission() {
+        if (Notification.permission !== 'granted') {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    console.log('Notification permission granted!');
+                }
+            });
+        }
+    }
+
+    window.onload = askNotificationPermission;
+</script>
+
+<script>
+    function notifyTaskDue(taskTitle) {
+        if (Notification.permission === 'granted') {
+            new Notification('Task Due!', {
+                body: `Your task "${taskTitle}" is due soon.`,
+                icon: '/path/to/icon.png'  // Optional icon path
+            });
+        }
+    }
+
+    function checkTaskDueSoon(tasks) {
+        tasks.forEach(task => {
+            const taskDeadline = new Date(task.deadline);
+            const now = new Date();
+            const timeUntilDue = taskDeadline - now;
+
+            // Check if task is due within the next 24 hours
+            if (timeUntilDue <= 24 * 60 * 60 * 1000 && timeUntilDue > 0) {
+                notifyTaskDue(task.title);
+            }
+        });
+    }
+</script>
+
+
+@* JS function to check if any tasks are overdue, and if so, alert the user.*@
+
+<script>
+    var overdueCount = @Model.OverdueCount;
+    var dueSoonCount = @Model.DueSoonCount;
+
+    function checkOverdueTasks() {
+        var message;
+
+        if (overdueCount > 0 || dueSoonCount > 0) {
+            message = 'You have ' + overdueCount + ' overdue items and ' + dueSoonCount + ' tasks due soon.';
+        } else {
+            message = 'All tasks are up to date!';
+        }
+
+        alert(message);
+    }
+    @* CALL TO THE checkOverdueTasks(tasks) function 
+    when the page loads by passing the tasks to it*@
+    checkOverdueTasks();
+</script>

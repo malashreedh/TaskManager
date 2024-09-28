@@ -20,9 +20,17 @@ namespace TaskManagerApp.Pages
 
         public List<UserTask> Tasks { get; set; } // Update to UserTask
 
+        // Properties to track overdue and due-soon tasks
+        public int OverdueCount { get; set; }
+        public int DueSoonCount { get; set; }
+
         public void OnGet()
         {
             Tasks = taskService.GetTasks(); // Update to UserTask
+
+            // Calculate overdue and due-soon tasks
+            OverdueCount = Tasks.Count(t => t.Deadline < System.DateTime.Now && !t.IsComplete); // Update to UserTask
+            DueSoonCount = Tasks.Count(t => t.Deadline >= System.DateTime.Now && t.Deadline <= System.DateTime.Now.AddDays(7) && !t.IsComplete); // Update to UserTask
         }
 
         public IActionResult OnPostAddTask()
