@@ -44,14 +44,25 @@
     <div class="secondary-container">
         
         <div class="AddTask">
-            <h3> Add a Task</h3>
-            <form method="post" asp-page-handler="AddTask">
-                <input type="text" asp-for="NewTask.Title" placeholder="Task Title" required />
-                <input type="text" asp-for="NewTask.Description" placeholder="Task Description" />
-                <input type="datetime-local" asp-for="NewTask.Deadline" />
-            </form>
-            <button type="submit">Add Task</button>
+            <div class="h3-container"> <h3> Add a Task</h3> </div>
+            <div class="form">
+                <form method="post" asp-page-handler="AddTask">
+                    <input type="text" asp-for="NewTask.Title" placeholder="Task Title" required />
+                    <input type="text" asp-for="NewTask.Description" placeholder="Task Description" />
+                    <input type="datetime-local" asp-for="NewTask.Deadline" />
+
+                    <select asp-for="NewTask.Priority">
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                    </select>
+                    
+                    <button type="submit">Add Task</button>
+                </form>
+                
+            </div>
         </div>
+
         <div class="others">
             <ul>
                 <li> Important Tasks </li>
@@ -60,6 +71,7 @@
                 <li> All Tasks </li>
             </ul>
         </div>
+
     </div>
 </section>
 

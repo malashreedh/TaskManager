@@ -32,7 +32,6 @@ namespace TaskManagerApp.Pages
                 taskService.AddTask(NewTask); // Update to UserTask
                 return RedirectToPage(); // Refresh the page
             }
-
             return Page();
         }
 

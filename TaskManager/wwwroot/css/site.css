@@ -73,6 +73,9 @@ body {
   background-color: #D2F1F3;
   text-align: center;
   margin-bottom: 10px;
+  height: 20%;
+  border-radius: 10px;
+  border: 1px solid #000000;
 }
 
 .main-container .to-dos .task-list-box .task-box{
@@ -80,6 +83,10 @@ body {
   margin: 10px;
   background-color: #B1BCC2;
   border-radius: 10px;
+  max-height: 80%;
+  min-height: 560px;
+  border-radius: 10px;
+  border: 1px solid #000000;
 }
 
 .main-container .to-dos .task-list-box .tasks {
@@ -119,24 +126,42 @@ body {
 
 }
 
-.main-container .secondary-container .AddTask h3 {
+.main-container .secondary-container .AddTask .h3-container h3{
   display: block;
   margin: 10px;
   background-color: #D2F1F3;
   text-align: center;
   float: top;
+  border-radius: 10px;
+  padding: 10px 0 10px 0;
+  height: 20%;
+  border: 1px solid #000000;
+}
+
+.main-container .secondary-container .AddTask .form {
+  margin: 10px;
+  padding: 10px 0 10px 0;
+  display: block;
+  height: 20%;
+  border-radius: 10px;
+  background-color: #B1BCC2;
+  border-radius: 10px;
+  border: 1px solid #000000;
 }
 
 .main-container .secondary-container .AddTask {
-  margin: 0 0 5px 0;
-  height: 40%;
+  margin: 0 5px 5px ;
+  height: 50%;
   background-color: #ffffff;
   justify-content: space-around;
   border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #000000;
 }
 
-.main-container .secondary-container .AddTask button {
+.main-container .secondary-container .AddTask .form button {
   float: right;
+  margin: 10px;
   border-radius: 80px;
   height: 30px;
   font-size: 0.8em;
@@ -157,6 +182,8 @@ body {
   text-align: center;
   height: 60%;
   background-color: #cf9292;
+  border-radius: 10px;
+  border: 1px solid #000000;
 }
 
 

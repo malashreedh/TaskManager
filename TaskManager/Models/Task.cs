@@ -8,6 +8,7 @@ namespace TaskManagerApp.Models
         public string Description { get; set; }
         public DateTime Deadline { get; set; }
         public bool IsComplete { get; private set; }
+        public string Priority { get; set; }
 
         public UserTask()
         {

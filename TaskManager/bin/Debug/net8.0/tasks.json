@@ -1,14 +1,8 @@
 [
   {
-    "Title": "Call Jen",
-    "Description": "Mayalu",
-    "Deadline": "2024-09-27T08:13:00",
-    "IsComplete": true
-  },
-  {
     "Title": "Writing Center",
     "Description": "Job",
     "Deadline": "2024-09-27T13:00:00",
-    "IsComplete": false
+    "IsComplete": true
   }
 ]
