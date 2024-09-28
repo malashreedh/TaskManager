@@ -158,9 +158,9 @@ body {
   margin: 10px;
   padding: 10px 0 10px 0;
   display: block;
-  height: 20%;
-  border-radius: 10px;
+  height: 73.5%;
   background-color: #B1BCC2;
+  border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #000000;
 }
@@ -176,12 +176,14 @@ body {
 }
 
 .AddTask button {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
   float: right !important;
-  margin: 10px;
+  margin: 0px;
   border-radius: 80px;
   height: 30px;
   font-size: 0.8em;
-  text-align: center;
   background-color: #28a745; /* Green background */
   color: white;
   border: #000000;
@@ -245,6 +247,12 @@ form {
   margin-bottom: 20px;
 }
 
+.custom-form{
+  width: 90%;
+  align-self: center;
+  margin: 10px 30px;
+}
+
 input, textarea {
   width: 100%;
   padding: 10px;
@@ -258,3 +266,9 @@ label {
   display: block;
 }
 
+.dropdown-custom{
+  border-radius: 5px;
+  background-color: #a79090;
+  min-width: 90px;
+  max-width: 120px;
+}

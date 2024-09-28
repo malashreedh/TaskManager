@@ -13,7 +13,7 @@
             <div class="task-box">
                 <div class="sort-buttons">
                     <form method="get">
-                        <select name="sort" onchange="this.form.submit()">
+                        <select name="sort" onchange="this.form.submit()"  class="dropdown-custom">
                             <option value="">Sort by...</option>
                             <option value="importance">Priority</option>
                             <option value="due">Due Date</option>
@@ -64,12 +64,12 @@
         <div class="AddTask">
             <div class="h3-container"> <h3> Add a Task</h3> </div>
             <div class="form">
-                <form method="post" asp-page-handler="AddTask">
+                <form method="post" asp-page-handler="AddTask" class="custom-form">
                     <input type="text" asp-for="NewTask.Title" placeholder="Task Title" required />
                     <input type="text" asp-for="NewTask.Description" placeholder="Task Description" />
                     <input type="datetime-local" asp-for="NewTask.Deadline" />
 
-                    <select asp-for="NewTask.Priority">
+                    <select asp-for="NewTask.Priority" class="dropdown-custom">
                             <option value="None" selected>Priority: None</option>
                             <option value="High">Priority: High</option>
                             <option value="Medium">Priority: Medium</option>
