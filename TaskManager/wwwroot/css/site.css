@@ -6,6 +6,7 @@ h2{
   font-size: 55px;
   font-family: Inspiration;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 @media (min-width: 768px) {
@@ -41,9 +42,12 @@ body {
   flex-direction: row;
   background-color: #B1BCC2;
   height: calc(100vh - 55px);
+  border-radius: 10px;
+  border: 5px solid #000000;
 }
 
 .main-container .to-dos {
+  border-radius: 10px;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -52,85 +56,110 @@ body {
   background-color: #FFFFFF;
 }
 
-.main-container .to-dos h3 {
-  display: block;
-  margin: 5px;
-  background-color: #D2F1F3;
-  text-align: center;
+.main-container .to-dos .task-list-box {
+  padding: 0 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 0 10px;
+  border-radius: 10px;
+  justify-content: space-around;
 }
 
-.main-container .to-dos .task-list {
-  padding: 0;
+.main-container .to-dos .task-list-box .h3-container {
+  display: block;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px 0 10px 0;
+  background-color: #D2F1F3;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.main-container .to-dos .task-list-box .task-box{
+  display: block;
+  margin: 10px;
   background-color: #B1BCC2;
+  border-radius: 10px;
+}
+
+.main-container .to-dos .task-list-box .tasks {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #B1BCC2;
+}
+
+.main-container .to-dos .task-list-box .tasks .task-due {
+  padding: 0;
+  float: right;
+}
+
+.main-container .to-dos .task-list-box .tasks .description {
+  padding: 0;
+  float: left;
+  margin-bottom: 20px;
+  flex: 1;
+  text-align: left;
+
+}
+
+.main-container .to-dos .task-list-box .tasks .task-due , .description {
+  flex: 1;
 }
 
 .main-container .secondary-container {
   width: 50%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   float: right;
-  margin: 5 5 5 0;
+  margin: 5px;
+
+}
+
+.main-container .secondary-container .AddTask h3 {
+  display: block;
+  margin: 10px;
+  background-color: #D2F1F3;
+  text-align: center;
+  float: top;
 }
 
 .main-container .secondary-container .AddTask {
-  margin: 0 0 5 0;
-  float: top;
-  background-color: #D2F1F3;
+  margin: 0 0 5px 0;
+  height: 40%;
+  background-color: #ffffff;
+  justify-content: space-around;
+  border-radius: 10px;
 }
 
 .main-container .secondary-container .AddTask button {
   float: right;
   border-radius: 80px;
   height: 30px;
-  padding: 0;
   font-size: 0.8em;
-  background-color: #D2F1F3;
+  background-color: #28a745; /* Green background */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .main-container .secondary-container .others{
   float: bottom;
-  margin: 0;
-  background-color: #FFFFFF;
+  border-radius: 10px;
+  margin: 10px ;
+  padding: 10px 0 0 0;
+  display: block;
+  text-align: center;
+  height: 60%;
+  background-color: #cf9292;
 }
 
 
-
-.tasks {
-  display: flex;
-  justify-content: space-between;
-  max-width: 800px;
-}
-
-.tasks .tasks-description {
-  margin-bottom: 20px;
-  flex: 1;
-  text-align: left;
-  max-width: 500px;
-  min-width: 500px;
-  background-color: #a79090;
-}
-
-.tasks .task-due {
-  flex: 1;
-  text-align: right;
-  max-width: 300px;
-  padding: 10px;
-  border-bottom: 1px solid #e1e1e1;
-  background-color: #a79090;
-}
-
-.task-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.task-item {
-  padding: 10px;
-  border-bottom: 1px solid #e1e1e1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 /* Button styles */
 button {

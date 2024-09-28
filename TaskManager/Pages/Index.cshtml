@@ -6,46 +6,49 @@
 
 <section class="main-container">
     <div class="to-dos">
-        <h3>To Dos</h3>
-            <ul >
-                @foreach (var task in Model.Tasks)
-                {
-                    <li>
-                        <div class= "tasks">
-                            <section>
-                                <div class="task-list">
-                                    <div>@task.Title </div>  
-                                    <p>- @task.Description</p>
-                                </div>
-                            </section>
+            <ul class="task-list-box">
+                <div class="h3-container"> <h3>To Dos</h3> </div>
+                <div class="task-box">
+                    @foreach (var task in Model.Tasks)
+                    {
+                        <li>
+                            <div class= "tasks">
+                                <section class="description">
+                                    <div >
+                                        <div>@task.Title </div>  
+                                        <p>- @task.Description</p>
+                                    </div>
+                                </section>
 
-                            <section>
-                                <div class= "task-due">
-                                    - Due: @task.Deadline.ToString("g")
-                                <div>
-                                    <form class= "task-form" method="post" asp-page-handler="CompleteTask">
-                                        <input type="hidden" name="title" value="@task.Title" />
-                                        <button type="submit" @(task.IsComplete ? "disabled" : "")>Complete</button>
-                                    </form>
-                                    <form class= "task-form" method="post" asp-page-handler="RemoveTask">
-                                        <input type="hidden" name="title" value="@task.Title" />
-                                        <button type="submit">Remove</button>
-                                    </form>
-                                </div>
-                                </div>
-                            </section>
-                        </div>
-                    </li>
+                                <section>
+                                    <div class= "task-due">
+                                        - Due: @task.Deadline.ToString("g")
+                                    <div>
+                                        <form class= "task-form" method="post" asp-page-handler="CompleteTask">
+                                            <input type="hidden" name="title" value="@task.Title" />
+                                            <button type="submit" @(task.IsComplete ? "disabled" : "")>Complete</button>
+                                        </form>
+                                        <form class= "task-form" method="post" asp-page-handler="RemoveTask">
+                                            <input type="hidden" name="title" value="@task.Title" />
+                                            <button type="submit">Remove</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </li>
                 }
             </ul>
     </div>
     
     <div class="secondary-container">
+        
         <div class="AddTask">
+            <h3> Add a Task</h3>
             <form method="post" asp-page-handler="AddTask">
                 <input type="text" asp-for="NewTask.Title" placeholder="Task Title" required />
                 <input type="text" asp-for="NewTask.Description" placeholder="Task Description" />
-                <input type="datetime-local" asp-for="NewTask.Deadline" required />
+                <input type="datetime-local" asp-for="NewTask.Deadline" />
             </form>
             <button type="submit">Add Task</button>
         </div>
