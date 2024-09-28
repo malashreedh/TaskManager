@@ -192,7 +192,7 @@ body {
   transition: background-color 0.3s;
 }
 
-.main-container .secondary-container .others{
+.notes{
   float: bottom;
   border-radius: 10px;
   margin: 10px ;

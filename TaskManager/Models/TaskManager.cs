@@ -49,4 +49,41 @@ namespace TaskManagerApp.Models
             }
         }
     }
+
+
+    //NoteService class
+        public class NoteService
+    {
+        private List<Note> notes = new List<Note>();
+        private readonly string noteFilePath;
+
+        public NoteService()
+        {
+            noteFilePath = Path.Combine(Directory.GetCurrentDirectory(), "notes.json");
+            LoadNotes();
+        }
+
+        public List<Note> GetNotes() => notes;
+
+        public void AddNote(Note note)
+        {
+            notes.Add(note);
+            SaveNotes();
+        }
+
+        private void SaveNotes()
+        {
+            var json = JsonConvert.SerializeObject(notes, Formatting.Indented);
+            File.WriteAllText(noteFilePath, json);
+        }
+
+        private void LoadNotes()
+        {
+            if (File.Exists(noteFilePath))
+            {
+                var json = File.ReadAllText(noteFilePath);
+                notes = JsonConvert.DeserializeObject<List<Note>>(json) ?? new List<Note>();
+            }
+        }
+    }
 }
