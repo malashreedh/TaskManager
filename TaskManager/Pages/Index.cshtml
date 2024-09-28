@@ -1,29 +1,63 @@
 ﻿@page
 @model TaskManagerApp.Pages.IndexModel
 
-<h2>Task Manager</h2>
+<h2>Let's get things done!</h2>
 
-<form method="post" asp-page-handler="AddTask">
-    <input type="text" asp-for="NewTask.Title" placeholder="Task Title" required />
-    <input type="text" asp-for="NewTask.Description" placeholder="Task Description" />
-    <input type="datetime-local" asp-for="NewTask.Deadline" required />
-    <button type="submit">Add Task</button>
-</form>
 
-<h3>Tasks</h3>
-<ul>
-    @foreach (var task in Model.Tasks)
-    {
-        <li>
-            @task.Title - @task.Description - Due: @task.Deadline.ToString("g")
-            <form method="post" asp-page-handler="CompleteTask">
-                <input type="hidden" name="title" value="@task.Title" />
-                <button type="submit" @(task.IsComplete ? "disabled" : "")>Complete</button>
+<section class="main-container">
+    <div class="to-dos">
+        <h3>To Dos</h3>
+            <ul >
+                @foreach (var task in Model.Tasks)
+                {
+                    <li>
+                        <div class= "tasks">
+                            <section>
+                                <div class="task-list">
+                                    <div>@task.Title </div>  
+                                    <p>- @task.Description</p>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class= "task-due">
+                                    - Due: @task.Deadline.ToString("g")
+                                <div>
+                                    <form class= "task-form" method="post" asp-page-handler="CompleteTask">
+                                        <input type="hidden" name="title" value="@task.Title" />
+                                        <button type="submit" @(task.IsComplete ? "disabled" : "")>Complete</button>
+                                    </form>
+                                    <form class= "task-form" method="post" asp-page-handler="RemoveTask">
+                                        <input type="hidden" name="title" value="@task.Title" />
+                                        <button type="submit">Remove</button>
+                                    </form>
+                                </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                }
+            </ul>
+    </div>
+    
+    <div class="secondary-container">
+        <div class="AddTask">
+            <form method="post" asp-page-handler="AddTask">
+                <input type="text" asp-for="NewTask.Title" placeholder="Task Title" required />
+                <input type="text" asp-for="NewTask.Description" placeholder="Task Description" />
+                <input type="datetime-local" asp-for="NewTask.Deadline" required />
             </form>
-            <form method="post" asp-page-handler="RemoveTask">
-                <input type="hidden" name="title" value="@task.Title" />
-                <button type="submit">Remove</button>
-            </form>
-        </li>
-    }
-</ul>
+            <button type="submit">Add Task</button>
+        </div>
+        <div class="others">
+            <ul>
+                <li> Important Tasks </li>
+                <li> Completed Tasks </li>
+                <li> Overdue Tasks </li>
+                <li> All Tasks </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
