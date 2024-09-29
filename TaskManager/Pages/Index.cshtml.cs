@@ -8,11 +8,14 @@ namespace TaskManagerApp.Pages
 {
     public class IndexModel : PageModel
     {
+        
         private readonly TaskService taskService; // Updated to TaskService
         private readonly NoteService noteService; // New NoteService
 
         public IndexModel()
         {
+            string taskFilePath = "tasks.json"; 
+            string noteFilePath = "notes.json"; //note file path
             taskService = new TaskService(); // Initialize TaskService
             noteService = new NoteService(); // Initialize NoteService
         }
@@ -20,6 +23,7 @@ namespace TaskManagerApp.Pages
         [BindProperty]
 
         public Note NewNote { get; set; } // New note to be added
+
 
         public List<Note> Notes { get; private set; } // Collection of existing notes
         public UserTask NewTask { get; set; } // Update to UserTask

@@ -205,6 +205,13 @@ body {
   border: 1px solid #000000;
 }
 
+.note-box{
+  max-width: 558px;
+  display: block;
+  margin: 20px 10px 10px 20px;
+  overflow: scroll;
+}
+
 
 /* TASK OVERDUE STYLES*/
 .task-overdue {

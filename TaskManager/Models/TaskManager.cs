@@ -10,7 +10,7 @@ namespace TaskManagerApp.Models
         private readonly string filePath;
         public TaskService()
         {
-            filePath = Path.Combine(Directory.GetCurrentDirectory(), "tasks.json");
+            filePath = Path.Combine(Directory.GetCurrentDirectory(),"..", "tasks.json");
             LoadTasks();
         }
 

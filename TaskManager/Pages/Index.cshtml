@@ -83,9 +83,9 @@
         </div>
 
         <div class="notes">
-            <h2>Notes</h2>
+            <h6>Notes</h6>
             <form method="post" asp-page-handler="AddNote">
-                <textarea asp-for="NewNote.Content" placeholder="Type your note here..." required></textarea>
+                <textarea asp-for="NewNote.Content" placeholder="Type your note here..." required class="note-box"></textarea>
                 <button type="submit">Add Note</button>
             </form>
 
@@ -93,7 +93,7 @@
                 @foreach (var note in Model.Notes)
                 {
                     <div class="note">
-                        <p>@note.Content</p>
+                        <li> <p>@note.Content</p></li>
                     </div>
                 }
             </div>
