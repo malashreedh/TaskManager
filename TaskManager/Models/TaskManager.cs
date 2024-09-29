@@ -26,7 +26,7 @@ namespace TaskManagerApp.Models
             SaveTasks();
         }
 
-        public List<UserTask> GetTasks() => tasks; // Update to UserTask
+        public List<UserTask> GetTasks() => tasks ?? new List<UserTask>();
 
         public void MarkTaskComplete(UserTask task) // Update to UserTask
         {
@@ -47,8 +47,13 @@ namespace TaskManagerApp.Models
                 var json = File.ReadAllText(filePath);
                 tasks = JsonConvert.DeserializeObject<List<UserTask>>(json) ?? new List<UserTask>(); // Update to UserTask
             }
+                if (tasks == null)
+            {
+                tasks = new List<UserTask>();
+            }
         }
     }
+
 
 
     //NoteService class
@@ -59,7 +64,7 @@ namespace TaskManagerApp.Models
 
         public NoteService()
         {
-            noteFilePath = Path.Combine(Directory.GetCurrentDirectory(), "notes.json");
+            noteFilePath = Path.Combine(Directory.GetCurrentDirectory(),"..", "notes.json");
             LoadNotes();
         }
 

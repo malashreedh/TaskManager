@@ -36,7 +36,8 @@ namespace TaskManagerApp.Pages
 
         public void OnGet()
         {
-            Tasks = taskService.GetTasks(); // Update to UserTask
+            
+            Tasks = taskService.GetTasks() ?? new List<UserTask>();
 
             // Calculate overdue and due-soon tasks
             OverdueCount = Tasks.Count(t => t.Deadline < System.DateTime.Now && !t.IsComplete); // Update to UserTask
@@ -70,6 +71,15 @@ namespace TaskManagerApp.Pages
                 return RedirectToPage(); // Refresh the page
             }
             return Page();
+        }
+        public IActionResult Index()
+        {
+            var model = new IndexViewModel
+            {
+                Tasks = taskService.GetTasks() ?? new List<UserTask>()
+            };
+
+            return View(model);
         }
 
         public IActionResult OnPostCompleteTask(string title)
