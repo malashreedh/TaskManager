@@ -63,13 +63,21 @@
             </div>
         </div>
 
-        <div class="others">
-            <ul>
-                <li> Important Tasks </li>
-                <li> Completed Tasks </li>
-                <li> Overdue Tasks </li>
-                <li> All Tasks </li>
-            </ul>
+        <div class="notes">
+            <h6>Notes</h6>
+            <form method="post" asp-page-handler="AddNote">
+                <textarea asp-for="NewNote.Content" placeholder="Type your note here..." required class="note-box"></textarea>
+                <button type="submit">Add Note</button>
+            </form>
+
+            <div class="existing-notes">
+                @foreach (var note in Model.Notes)
+                {
+                    <div class="note">
+                        <li> <p>@note.Content</p></li>
+                    </div>
+                }
+            </div>
         </div>
 
     </div>

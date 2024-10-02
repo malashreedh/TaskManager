@@ -33,3 +33,4 @@
 /Users/malashreedhun/Desktop/project/Task Manager /TaskManager/bin/Debug/net8.0/Newtonsoft.Json.dll
 /Users/malashreedhun/Desktop/project/Task Manager /TaskManager/obj/Debug/net8.0/TaskMana.F3FB485A.Up2Date
 /Users/malashreedhun/Desktop/project/Task Manager /TaskManager/obj/Debug/net8.0/TaskManager.sourcelink.json
+/Users/malashreedhun/Desktop/project/Task Manager /TaskManager/bin/Debug/net8.0/notes.json

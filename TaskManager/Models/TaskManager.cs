@@ -4,6 +4,18 @@ using Newtonsoft.Json;
 
 namespace TaskManagerApp.Models
 {
+    
+    public class Note
+    {
+        public string? Title { get; set; }
+        public string? Content { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
+
+    }
+
+
+
     public class TaskService // Renamed from TaskManager to TaskService
     {
         private List<UserTask> tasks = new List<UserTask>(); // Update to UserTask
