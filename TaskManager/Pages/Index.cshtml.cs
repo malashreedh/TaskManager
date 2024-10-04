@@ -11,13 +11,19 @@ using System.Collections.Generic;
 
 namespace TaskManagerApp.Pages
 {
+    //Initialize NewTask, Tasks, NewNote, and Notes in the constructor.
     public class IndexModel : PageModel
     {
+       
         private readonly TaskService taskService; // Updated to TaskService
 
         public IndexModel()
         {
             taskService = new TaskService(); // Initialize TaskService
+             NewTask = new UserTask();
+            Tasks = new List<UserTask>();
+            NewNote = new Note();
+            Notes = new List<Note>();
         }
 
         [BindProperty]

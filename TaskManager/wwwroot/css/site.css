@@ -65,17 +65,23 @@ body {
   justify-content: space-around;
 }
 
-.main-container .to-dos .task-list-box .h3-container {
-  display: block;
+.main-container .to-dos .task-list-box .h3-container{
+  height: 20%;
   border-radius: 10px;
   margin: 10px;
   padding: 10px 0 10px 0;
   background-color: #D2F1F3;
   text-align: center;
-  margin-bottom: 10px;
-  height: 20%;
-  border-radius: 10px;
   border: 1px solid #000000;
+}
+
+.main-container .to-dos .task-list-box .h3-container h3{
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  min-height: 20%;
+  max-height: 20%;
+ 
 }
 
 .main-container .to-dos .task-list-box .task-box{
@@ -83,19 +89,30 @@ body {
   margin: 10px;
   background-color: #B1BCC2;
   border-radius: 10px;
-  max-height: 80%;
+  max-height: 560px;
   min-height: 560px;
   border-radius: 10px;
   border: 1px solid #000000;
+  position: relative;
+  overflow: scroll;
+}
+
+.main-container .to-dos .task-list-box .task-box .sort-buttons{
+  position: absolute;
+  top:0;
+  right: 0;
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .main-container .to-dos .task-list-box .tasks {
   margin: 10px;
-  padding: 10px;
+  padding: 25px 10px 0px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #B1BCC2;
+  overflow: scroll;
 }
 
 .main-container .to-dos .task-list-box .tasks .task-due {
@@ -131,7 +148,6 @@ body {
   margin: 10px;
   background-color: #D2F1F3;
   text-align: center;
-  float: top;
   border-radius: 10px;
   padding: 10px 0 10px 0;
   height: 20%;
@@ -142,9 +158,9 @@ body {
   margin: 10px;
   padding: 10px 0 10px 0;
   display: block;
-  height: 20%;
-  border-radius: 10px;
+  height: 73.5%;
   background-color: #B1BCC2;
+  border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #000000;
 }
@@ -159,21 +175,24 @@ body {
   border: 1px solid #000000;
 }
 
-.main-container .secondary-container .AddTask .form button {
-  float: right;
-  margin: 10px;
+.AddTask button {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  float: right !important;
+  margin: 0px;
   border-radius: 80px;
   height: 30px;
   font-size: 0.8em;
   background-color: #28a745; /* Green background */
   color: white;
-  border: none;
+  border: #000000;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.main-container .secondary-container .others{
+.notes{
   float: bottom;
   border-radius: 10px;
   margin: 10px ;
@@ -185,6 +204,21 @@ body {
   border-radius: 10px;
   border: 1px solid #000000;
 }
+
+.note-box{
+  max-width: 558px;
+  display: block;
+  margin: 20px 10px 10px 20px;
+  overflow: scroll;
+}
+
+
+/* TASK OVERDUE STYLES*/
+.task-overdue {
+  color: red;
+  font-weight: bold;
+}
+
 
 
 
@@ -220,6 +254,12 @@ form {
   margin-bottom: 20px;
 }
 
+.custom-form{
+  width: 90%;
+  align-self: center;
+  margin: 10px 30px;
+}
+
 input, textarea {
   width: 100%;
   padding: 10px;
@@ -231,4 +271,11 @@ input, textarea {
 label {
   margin-bottom: 5px;
   display: block;
+}
+
+.dropdown-custom{
+  border-radius: 5px;
+  background-color: #a79090;
+  min-width: 90px;
+  max-width: 120px;
 }
